@@ -1,5 +1,7 @@
 const express = require('express');
+const { default: inquirer } = require('inquirer');
 const mysql = require('mysql2');
+const QueryString = require('qs');
 require("dotenv").config()
 
 const PORT = process.env.PORT || 3001;
@@ -16,9 +18,9 @@ const db = mysql.createConnection(
       user: 'root',
       // TODO: Add MySQL password here
       password: process.env.DB_PASSWORD,
-      database: 'movies_db'
+      database: 'employee_db'
     },
-    console.log(`Connected to the movies_db database.`)
+    console.log(`Connected to the database.`)
   );
 
 const mainMenu = [
@@ -31,7 +33,7 @@ const mainMenu = [
     }
 ]
 
-const addEmployee = [
+const addEmployees = [
     {
         type: 'input',
         message: "What is the first name of the Employee?",
@@ -56,7 +58,7 @@ const addEmployee = [
     }
 ]
 
-const addRole = [
+const addRoles = [
     {
         type: "input",
         message: 'What is the name of the Role?',
@@ -69,7 +71,7 @@ const addRole = [
     },
 ]
 
-const addDepartment = [
+const addDepartments = [
     {
         type: "input",
         message: "What is the name of the department you would like to add?",
@@ -77,6 +79,51 @@ const addDepartment = [
     },
 ]
 
+function option () {
+    inquirer
+        .prompt(mainMenu)
+
+        .then((data) => {
+            if(data.choice === "View All Employees") {
+                viewAllEmployees()
+            }
+            if(data.choice === "Add Employee") {
+                addEmployee()
+            }
+            if(data.choice === "Update Employee Role") {
+                updateEmployeeRole()
+            }
+            if(data.choice === "View All Roles") {
+                viewAllRoles()
+            }
+            if(data.choice === "Add Role") {
+                addRole()
+            }
+            if(data.choice === "View All Departments") {
+                viewAllDepartments()
+            }
+            if(data.choice === "Add Department") {
+                addDepartment()
+            }
+            if(data.chocie === "Quit") {
+                quit()
+            }
+        })
+}
+
+function addEmployee() {
+//use class to create new Employee
+}
+
+function addRole() {
+//use class to create new Role
+}
+
+function addDepartment() {
+//use class to create new Department
+}
+
+
 function viewAllEmployees() {
-    db.query()
+    db.query('SELECT e.id, e.first_name, e.last_name, r.title, r.salary, d.department_name, e.manager_id FROM employee e JOIN roles r ON e.role_id = r.id JOIN department d ON d.id = r.department_id;');
 }
