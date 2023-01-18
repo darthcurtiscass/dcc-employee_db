@@ -23,15 +23,15 @@ VALUES  ("Fry Cook", 35000, 1),
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES  ("Dylan", "Cassagnol", 2, 1),
-        ("Victoria", "Phillips", 9, 2),
-        ("Spongebob", "Squarepants", 1, 3),
-        ("Squidward", "Tentacles", 7, 4),
-        ("Eugene", "Krabs", 6, 5),
-        ("Bugs", "Bunny", 4, 6),
-        ("Daffy", "Duck", 9, 7),
-        ("Ickis", "", 10, 8),
-        ("Randy", "Marsh", 8, 9),
-        ("Elmer", "Fudd", 5, 10);
+        ("Victoria", "Phillips", 3, NULL),
+        ("Spongebob", "Squarepants", 1, NULL),
+        ("Squidward", "Tentacles", 7, NULL),
+        ("Eugene", "Krabs", 6, 3),
+        ("Bugs", "Bunny", 4, 4),
+        ("Daffy", "Duck", 9, NULL),
+        ("Ickis", "Monster", 10, NULL),
+        ("Randy", "Marsh", 8, NULL),
+        ("Elmer", "Fudd", 5, NULL);
 
 
 
